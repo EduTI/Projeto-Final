@@ -5,13 +5,62 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Cadastro</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Cadastro</title>
 </h:head>
 <h:body>
-	<p:commandButton value="TESTE"></p:commandButton>
-	<p:growl></p:growl>
-	<p:ajaxStatus onStart="" 
-	onsucess=""></p:ajaxStatus>
+	<p:growl id="msgs" widgetVar="msgs" showDetail="false"
+		autoUpdate="true" sticky="false" life="7500" />
+
+	<p:dialog widgetVar="dgNovo" modal="true" resizable="false"
+	 width="450" height="200" showHeader="false" id="dgNovo" >
+
+		<p:graphicImage name="ajax-loader.gif" library="images" />
+
+		<p:outputPanel style="text-align:center">
+			<h:outputText value="Nome: " />
+			<h:inputText />
+			<br />
+			<br />
+
+			<h:outputText value="Código: " />
+			<h:inputText />
+			<br />
+			<br />
+
+			<h:outputText value="Cep: " />
+			<h:inputText />
+			<br />
+			<br />
+
+			<h:outputText value="Endereço: " />
+			<h:inputText />
+			<br />
+			<br />
+
+			<h:outputText value="Bairro: " />
+			<h:inputText />
+			<br />
+			<br />
+
+			<h:outputText value="Cidade: " />
+			<h:inputText />
+			<br />
+			<br />
+		</p:outputPanel>
+		<f:facet name="footer">
+			<p:outputPanel layout="block" style="text-align:center">
+				<p:commandButton value="Confirmar" icon="ui-icon-check" />
+				<p:commandButton value="Cancelar" icon="ui-icon-close"
+					oncomplete="PF('dgNovo').hide()" />
+
+			</p:outputPanel>
+		</f:facet>
+
+	</p:dialog>
+	<p:ajaxStatus onstart="PF('dgNovo').show()"
+		onsucess="PF('dgNovo').hide()" />
+
+	<p:commandButton value="CLIQUE" oncomplete="PF('dgNovo').show()"></p:commandButton>
 </h:body>
 </html>

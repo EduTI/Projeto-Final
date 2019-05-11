@@ -63,6 +63,12 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+	
+		<dependency>
+			<groupId>br.com.etechoracio</groupId>
+			<artifactId>etec-commons</artifactId>
+			<version>${etec-commons.version}</version>
+		</dependency>
 
 	</dependencies>
 
