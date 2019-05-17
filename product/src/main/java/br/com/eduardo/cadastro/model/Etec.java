@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.etechoracio.common.model.BaseORM;
 import lombok.Getter;
 import lombok.Setter;
 
