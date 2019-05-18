@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import br.com.etechoracio.common.model.BaseORM;
@@ -45,4 +46,11 @@ public class Etec extends BaseORM {
 	
 	@Column(name = "DATA_INCLUSAO")
 	private Date Data;
+
+	@PrePersist
+	private void preencherDataIncl() {
+		if(Data == null)
+			Data = new Date();
+			
+	}
 }
