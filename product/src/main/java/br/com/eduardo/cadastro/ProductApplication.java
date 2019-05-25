@@ -1,4 +1,4 @@
-package br.com.localizar.etecs.product;
+package br.com.eduardo.cadastro;
 
 import javax.faces.webapp.FacesServlet;
 

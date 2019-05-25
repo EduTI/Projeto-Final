@@ -23,34 +23,37 @@ public class Etec extends BaseORM {
 	@Column(name = "ID_ETEC")
 	private Long id;
 	
+	@Column(name = "COD_ETEC")
+	private Integer codigo;
+	
 	@Column(name = "NOME_ETEC")
-	private String Nome;
+	private String nome;
 	
 	@Column(name = "CEP_ETEC")
-	private Long Cep;
+	private String cep;
 	
 	@Column(name = "LAT_CEP")
-	private Long Lat;
+	private double lat;
 	
 	@Column(name = "LONG_CEP")
-	private Long Long;
+	private double longi;
 	
-	@Column(name = "ENDERECO")
-	private String Endereco;
+	@Column(name = "ENDERECO_ETEC")
+	private String endereco;
 	
-	@Column(name = "BAIRRO")
-	private String Bairro;
+	@Column(name = "BAIRRO_ETEC")
+	private String bairro;
 	
-	@Column(name = "CIDADE")
-	private String Cidade;
+	@Column(name = "CIDADE_ETEC")
+	private String cidade;
 	
 	@Column(name = "DATA_INCLUSAO")
-	private Date Data;
+	private Date data;
 
 	@PrePersist
 	private void preencherDataIncl() {
-		if(Data == null)
-			Data = new Date();
+		if(data == null)
+			data = new Date();
 			
 	}
 }

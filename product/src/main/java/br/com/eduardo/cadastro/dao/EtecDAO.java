@@ -4,5 +4,11 @@ import br.com.eduardo.cadastro.model.Etec;
 import br.com.etechoracio.common.dao.BaseDAO;
 
 public interface EtecDAO extends BaseDAO<Etec> {
+	
+	
+	
+	public Etec findByCodigoOrNome(Integer codigo, String nome);
+		
+	
 
 }
