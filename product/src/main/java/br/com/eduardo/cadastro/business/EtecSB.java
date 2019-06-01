@@ -20,6 +20,19 @@ public class EtecSB extends BaseSB{
 		etecDAO = getDAO(EtecDAO.class);
 	}
 	
+
+	
+	@Transactional(propagation = Propagation.NOT_SUPPORTED)
+	public List<Etec> findAll(){
+		return etecDAO.findAll();
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void remove(Etec etec) {
+		etecDAO.delete(etec);
+
+	}
+	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void save (Etec etec) throws Exception {
 		Etec e = etecDAO.findByCodigoOrNome(etec.getCodigo(), etec.getNome());
@@ -31,17 +44,6 @@ public class EtecSB extends BaseSB{
 			throw new Exception("Código ou Nome já existente");
 		}
 			
-	}
-	
-	@Transactional(propagation = Propagation.NOT_SUPPORTED)
-	public List<Etec> findAll(){
-		return etecDAO.findAll();
-	}
-	
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void remove(Etec etec) {
-		etecDAO.delete(etec);
-
 	}
 
 	

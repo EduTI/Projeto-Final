@@ -57,8 +57,10 @@
 
 			<f:facet name="footer">
 				<p:outputPanel layout="block" style="text-align:center" />
+				
 				<p:commandButton value="Confirmar" icon="ui-icon-check"
-					update=":msgs form" actionListener="#{etecMB.onSave()}" />
+					update=":msgs form tblRegistros" actionListener="#{etecMB.onSave()}" />
+				
 				<p:commandButton value="Cancelar" icon="ui-icon-close"
 					oncomplete="PF('dgCadastro').hide()" />
 			</f:facet>
@@ -68,6 +70,7 @@
 	<br></br>
 	<br></br>
 <p:panel header="Registros" id="pnlResultado" style="width:98%;border:1;">
+	
 	<p:dataTable id="tblRegistros" var="et" value="#{etecMB.registros}" paginator="true"
 		rows="10" rowsPerPageTemplate="5,10,15"
 		 reflow="true" emptyMessage="Nenhum registro encontrado">
@@ -93,11 +96,16 @@
 			<h:outputText value="#{et.cidade}" />
 		</p:column>
 		<p:column headerText="Alteracoes">
-			<p:commandButton id="btnExcluir" icon="ui-icon-close" title="Excluir" />
-			<p:commandButton id="btnAlterar" icon="ui-icon-pencil" title="Alterar" />
-
+			<p:commandButton id="btnExcluir" icon="ui-icon-trash" title="Excluir" 
+			 actionListener="#{etecMB.onRemove(et)}" update="tblRegistros"/>
+			
+			<p:commandButton id="btnAlterar" icon="ui-icon-pencil" title="Alterar"
+			 actionListener="#{etecMB.onUpdate(et)}" update="tblRegistros frmDialog" process="tblRegistros"
+			 oncomplete="PF('dgCadastro').show()" />
 		</p:column>
+		
 	</p:dataTable>
+	
 </p:panel>
 	<script type="text/javascript">
 		function limpa_formulário_cep() {

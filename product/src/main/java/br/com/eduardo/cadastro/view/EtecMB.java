@@ -23,18 +23,12 @@ public class EtecMB extends BaseMB {
 	@Autowired
 	private EtecSB etecSB;
 
-	private Etec edit = new Etec();
-
-	private DualListModel<Etec> etec;
-
-	Etec etecAdd = new Etec();
-
 	private List<Etec> registros;
 
+	private Etec edit = new Etec();
+	
 	public void postConstruct() {
 		registros = etecSB.findAll();
-		List<Etec> source = etecSB.findAll();
-		etec = new DualListModel<Etec>(source, new ArrayList<Etec>());
 	}
 
 	public void onRemove(Etec etec) {
@@ -43,13 +37,15 @@ public class EtecMB extends BaseMB {
 		showDeleteMessage();
 	}
 	
+	
 	public void onUpdate(Etec etec){
-		etecAdd = etec;
+		edit = etec;
 	} 
-
+	
 	public void onSave() {
 		try {
 			etecSB.save(edit);
+			registros = etecSB.findAll();
 			showInsertMessage();
 		} catch (Exception e) {
 			showErrorMessage(e.getMessage());
