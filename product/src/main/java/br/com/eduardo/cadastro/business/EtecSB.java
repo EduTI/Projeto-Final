@@ -31,8 +31,6 @@ public class EtecSB extends BaseSB{
 			throw new Exception("Código ou Nome já existente");
 		}
 			
-		
-		
 	}
 	
 	@Transactional(propagation = Propagation.NOT_SUPPORTED)
@@ -40,5 +38,11 @@ public class EtecSB extends BaseSB{
 		return etecDAO.findAll();
 	}
 	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void remove(Etec etec) {
+		etecDAO.delete(etec);
+
+	}
+
 	
 }
